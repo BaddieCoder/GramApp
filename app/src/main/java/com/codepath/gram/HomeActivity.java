@@ -2,30 +2,51 @@ package com.codepath.gram;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.codepath.gram.Fragments.ComposeFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
+
+    private BottomNavigationView bottomNavigationView ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-      //  Toolbar toolbar = findViewById(R.id.toolbar);
-       // setSupportActionBar(toolbar);
+        bottomNavigationView =  findViewById(R.id.bottom_navigation);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, CameraActivity.class);
-                startActivity(intent);
-
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_compose:
+                        Intent intent = new Intent(HomeActivity.this, ComposeFragment.class);
+                        startActivity(intent);
+                        return true;
+                    case R.id.action_profile:
+                        // do something here
+                        return true;
+                    case R.id.action_home:
+                        // do something here
+                        return true;
+                    default: return true;
+                }
             }
         });
+
+
+
     }
+
+
+
+
 
 }

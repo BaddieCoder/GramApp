@@ -15,10 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".CameraActivity"
-            android:label="@string/title_activity_camera"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <!--<activity-->
+            <!--android:name=".HomeActivity"-->
+            <!--android:label="@string/title_activity_camera"-->
+            <!--android:theme="@style/AppTheme.NoActionBar"></activity>activity-->
 
         <!-- make sure within the application tag, otherwise app will crash with XmlResourceParser errors -->
         <provider
