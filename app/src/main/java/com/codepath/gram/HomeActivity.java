@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.codepath.gram.Fragments.ComposeFragment;
+import com.codepath.gram.Fragments.TimelineFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -39,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
                         Toast. makeText(HomeActivity.this, "profile",Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_home:
-                        fragment   = new ComposeFragment();
+                        fragment   = new TimelineFragment();
                         Toast. makeText(HomeActivity.this, "home",Toast.LENGTH_SHORT).show();
                         break;
                     default: break;

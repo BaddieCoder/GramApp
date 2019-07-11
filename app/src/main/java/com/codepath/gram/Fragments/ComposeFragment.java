@@ -23,15 +23,12 @@ import androidx.fragment.app.Fragment;
 
 import com.codepath.gram.Post;
 import com.codepath.gram.R;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
-import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -85,18 +82,6 @@ public class ComposeFragment extends Fragment {
         btnSubmit = view.findViewById(R.id.btnPost);
     }
 
-    private void queryPosts() {
-        ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);
-        postQuery.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                for(int i = 0; i< posts.size(); i++) {
-                    Toast.makeText(getContext(),"Post:" + posts.get(i).getDescription()+ posts.size(),Toast.LENGTH_SHORT ).show();
-                    // Log.d(TAG, "Post:" + posts.get(i).getDescription());
-                }
-            }
-        });
-    }
 
     private void savePost(String description, ParseUser parseUser, File photoFile) {
         Post post = new Post();
