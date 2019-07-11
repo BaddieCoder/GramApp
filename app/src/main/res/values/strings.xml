@@ -11,4 +11,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_camera">CameraActivity</string>
+    <string name="description">description</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="post">Post</string>
 </resources>
