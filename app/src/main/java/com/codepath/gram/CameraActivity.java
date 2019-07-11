@@ -56,16 +56,7 @@ public class CameraActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String description = etDescription.getText().toString();
-                Toast.makeText(CameraActivity.this,description,Toast.LENGTH_SHORT).show();
-                ParseUser user = ParseUser.getCurrentUser();
-
-                if(photoFile == null || image.getDrawable() == null){
-                    Log.e(TAG, "No photo to submit");
-                    Toast.makeText(CameraActivity.this, "No photo taken", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                savePost(description, user, photoFile);
+                submitPost();
             }
 
         });
@@ -169,5 +160,17 @@ public class CameraActivity extends AppCompatActivity {
         btnTakePhoto = findViewById(R.id.btnTakePhoto);
         image = findViewById(R.id.ivImage);
         btnSubmit = findViewById(R.id.btnPost);
+    }
+    private void submitPost() {
+        String description = etDescription.getText().toString();
+        Toast.makeText(CameraActivity.this,description,Toast.LENGTH_SHORT).show();
+        ParseUser user = ParseUser.getCurrentUser();
+
+        if(photoFile == null || image.getDrawable() == null){
+            Log.e(TAG, "No photo to submit");
+            Toast.makeText(CameraActivity.this, "No photo taken", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        savePost(description, user, photoFile);
     }
 }
