@@ -2,6 +2,7 @@ package com.codepath.gram;
 
 import android.app.Application;
 
+import com.codepath.gram.Models.Post;
 import com.parse.Parse;
 import com.parse.ParseObject;
 

@@ -21,7 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import com.codepath.gram.Post;
+import com.codepath.gram.Models.Post;
 import com.codepath.gram.R;
 import com.parse.ParseException;
 import com.parse.ParseFile;

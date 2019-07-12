@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.codepath.gram.Post;
+import com.codepath.gram.Models.Post;
 import com.codepath.gram.PostsAdapter;
 import com.codepath.gram.R;
 import com.parse.FindCallback;
