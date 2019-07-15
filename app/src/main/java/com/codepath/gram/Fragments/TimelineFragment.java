@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.codepath.gram.Models.Post;
 import com.codepath.gram.PostsAdapter;
@@ -23,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TimelineFragment extends Fragment {
+
+    private SwipeRefreshLayout swipeContainer;
 
     private RecyclerView rvPosts;
     private PostsAdapter adapter;
@@ -44,7 +47,33 @@ public class TimelineFragment extends Fragment {
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
     queryPosts();
+
+
+
+
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                queryPosts();
+                swipeContainer.setRefreshing(false);
+
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
     }
+
+
+
 
     private void queryPosts() {
         ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);

@@ -1,16 +1,19 @@
 package com.codepath.gram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.codepath.gram.Activities.DetailView;
 import com.codepath.gram.Models.Post;
 import com.parse.ParseFile;
 
@@ -45,8 +48,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.viewholder> 
     public int getItemCount() {
         return posts.size();
     }
-
-    class viewholder extends RecyclerView.ViewHolder {
+    class viewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView tvHandle;
         private ImageView ivImage;
@@ -57,7 +59,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.viewholder> 
             tvHandle = itemView.findViewById(R.id.tvHandle);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+
+            itemView.setOnClickListener(this);
         }
+
 
 
         public void bind(Post post) {
@@ -70,6 +75,35 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.viewholder> 
             }
             tvDescription.setText(post.getDescription());
         }
-    }
 
+        @Override
+        public void onClick(View view) {
+
+            int position = getAdapterPosition();
+            // make sure the position is valid, i.e. actually exists in the view
+            if (position != RecyclerView.NO_POSITION) {
+                // get the movie at the position, this won't work if the class is static
+                Post post = posts.get(position);
+                Toast.makeText(context, post.getObjectId(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), DetailView.class);
+
+                intent.putExtra( "postId",post.getObjectId());
+                intent.putExtra( "userId",post.getUser().getUsername());
+                context.startActivity(intent);
+
+            }
+        }
+
+
+        public void clear() {
+            posts.clear();
+            notifyDataSetChanged();
+        }
+
+        public void addAll(List<Post> list) {
+            posts.addAll(list);
+            notifyDataSetChanged();
+        }
+
+    }
 }
