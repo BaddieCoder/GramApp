@@ -38,12 +38,9 @@ public class ComposeFragment extends Fragment {
     private Button btnTakePhoto;
     private ImageView image;
     private Button btnSubmit;
-
-
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     public String photoFileName = "photo.jpg";
     private File photoFile;
-
     private static final String TAG = "ComposeFragment";
 
 
@@ -82,7 +79,6 @@ public class ComposeFragment extends Fragment {
         btnSubmit = view.findViewById(R.id.btnPost);
     }
 
-
     private void savePost(String description, ParseUser parseUser, File photoFile) {
         Post post = new Post();
         post.setDescription(description);
@@ -116,7 +112,6 @@ public class ComposeFragment extends Fragment {
         }
         savePost(description, user, photoFile);
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
