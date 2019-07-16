@@ -102,7 +102,7 @@ public class ComposeFragment extends Fragment {
 
     private void submitPost() {
         String description = etDescription.getText().toString();
-        Toast.makeText(getContext(),description,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),description,Toast.LENGTH_SHORT).show();
         ParseUser user = ParseUser.getCurrentUser();
 
         if(photoFile == null || image.getDrawable() == null){
